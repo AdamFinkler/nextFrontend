@@ -24,6 +24,3 @@ dist-ssr
 *.sw?
 
 adam.txt
-src/assets
-src/common-components
-src/homepage
