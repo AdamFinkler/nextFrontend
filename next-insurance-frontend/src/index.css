@@ -7,4 +7,10 @@
 
 :root {
   --lightblue: #00d7ff;
+  --black: #000000;
+  --backdrop-color: lightgray;
+  --white: #ffffff;
+  --dark-grey: #231F20;
+
+
 }
