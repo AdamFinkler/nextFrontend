@@ -1,0 +1,83 @@
+.card-wrapper {
+  width: 143px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.card-image {
+  height: 214px;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-family: Georgia;
+  font-size: 14px;
+  text-align: center;
+}
+
+.card-rating-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.card-rating-text {
+  font-size: 12px;
+}
+
+.card-star-icon {
+  width: 14px;
+}
+
+@media (min-width: 768px) {
+  .card-wrapper {
+    width: 200px;
+    row-gap: 15px;
+  }
+
+  .card-image {
+    height: 300px;
+  }
+
+  .card-title {
+    font-size: 24px;
+  }
+
+  .card-rating-text {
+    font-size: 20px;
+  }
+
+  .card-star-icon {
+    width: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-wrapper {
+    width: 260px;
+    row-gap: 20px;
+  }
+
+  .card-image {
+    height: 385px;
+  }
+
+  .card-title {
+    font-size: 30px;
+  }
+
+  .card-rating-text {
+    font-size: 25px;
+  }
+
+  .card-star-icon {
+    width: 28px;
+  }
+}

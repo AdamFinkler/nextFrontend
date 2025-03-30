@@ -1,0 +1,22 @@
+
+
+
+.cards-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 8px; 
+}
+
+
+@media (min-width: 768px) {
+  .cards-list-wrapper {
+    gap: 36px 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards-list-wrapper {
+    gap: 48px 16px; 
+  }
+}
