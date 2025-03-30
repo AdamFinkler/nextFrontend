@@ -1,12 +1,12 @@
 .primary-button {
+  display: flex;
   border-radius: 50px;
   outline: none;
   border: none;
-  width: 100%;
-  background-color: #00d7ff;
+  max-width: 260px;
+  background-color: transparent;
   border: 1px solid var(--black);
   padding: 12px;
-  display: flex;
   justify-content: space-between;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -19,4 +19,18 @@
 
 .primary-button:hover {
   background-color: #217997;
+}
+
+.primary-button.close {
+  flex-direction: row-reverse;
+}
+
+.primary-button.close img {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .primary-button {
+    max-width: none;
+  }
 }

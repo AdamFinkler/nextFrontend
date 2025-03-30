@@ -1,4 +1,5 @@
 .homepage {
+  position: relative;
   background-color: var(--lightblue);
   padding: 50px 20px;
   display: flex;
