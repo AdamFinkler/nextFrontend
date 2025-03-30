@@ -1,4 +1,8 @@
 .layout-top-bar {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  background-color: var(--white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +66,7 @@
 
 @media (min-width: 1200px) {
   .layout-top-bar {
-    padding: 0 143px;
+    padding: 10px 143px;
   }
   .banner {
     height: 81px;
