@@ -10,9 +10,11 @@ const CardList = ({ movies }: ICardList) => {
         <Card
           key={movie.id}
           imageUrl={movie.image}
-          rating={movie.rating ? Number(movie.rating) : 0}
+          rating={movie.rating}
           title={movie.title}
           released = {movie.released}
+          description = {movie.synopsis}
+          duration = {movie.runtime}
         />
       ))}
     </div>

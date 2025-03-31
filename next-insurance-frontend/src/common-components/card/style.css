@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   row-gap: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-image {
@@ -16,10 +16,11 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.card-title-and-release{
+.card-title-and-release {
   font-family: Georgia;
   font-size: 14px;
   text-align: center;
+  margin-bottom: auto;
 }
 
 .card-rating-wrapper {

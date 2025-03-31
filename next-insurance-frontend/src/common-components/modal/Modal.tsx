@@ -6,7 +6,7 @@ import Button from "../button/Button";
 
 import { IModal } from "./types";
 
-Modal.setAppElement("#root");
+Modal.setAppElement("body");
 
 const MovieModal = ({
   imageUrl,
@@ -34,20 +34,14 @@ const MovieModal = ({
 
           <div className="modal-details-container">
             <div className="modal-text-details-wrapper">
-              <h2 className="title">title</h2>
+              <h2 className="title">{title}</h2>
 
-              <p className="duration"> 2h 19min</p>
+              <p className="duration">{duration}</p>
 
-              <p className="rating"> 8.8/10</p>
+              <p className="rating"> {rating}</p>
 
               <p className="description">
-                An insomniac office worker and a devilmay-care soapmaker form an
-                underground fight club that evolves into something much, much
-                more. An insomniac office worker and a devilmay-care soapmaker
-                form an underground fight club that evolves into something much,
-                much more. An insomniac office worker and a devilmay-care
-                soapmaker form an underground fight club that evolves into
-                something much, much more.
+               {description}
               </p>
             </div>
 
