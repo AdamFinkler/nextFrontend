@@ -6,7 +6,7 @@ import arrowIcon from "../../assets/arrow.png";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 
-const Card = ({ imageUrl, title, rating }: ICard) => {
+const Card = ({ imageUrl, title, released, rating }: ICard) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const setOpenModal = () => {
@@ -21,7 +21,7 @@ const Card = ({ imageUrl, title, rating }: ICard) => {
     <div className="card-wrapper">
       <img src={imageUrl} alt={`card-image-${title}`} className="card-image" />
 
-      <p className="card-title">{title}</p>
+      <p className="card-title-and-release">{`${title} (${released})`}</p>
 
       <div className="card-rating-wrapper">
         <img src={starIcon} alt="star-icon" className="card-star-icon" />

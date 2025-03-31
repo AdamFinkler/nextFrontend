@@ -16,7 +16,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.card-title {
+.card-title-and-release{
   font-family: Georgia;
   font-size: 14px;
   text-align: center;
@@ -46,7 +46,7 @@
     height: 300px;
   }
 
-  .card-title {
+  .card-title-and-release {
     font-size: 24px;
   }
 
@@ -69,7 +69,7 @@
     height: 385px;
   }
 
-  .card-title {
+  .card-title-and-release {
     font-size: 30px;
   }
 

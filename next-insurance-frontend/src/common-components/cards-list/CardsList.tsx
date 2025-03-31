@@ -1,24 +1,22 @@
 import Card from "../card/Card";
 import "./style.css";
-import { mockMovies } from "../../mock-data/mockMovies";
+import { ICardList } from "./types";
 
+const CardList = ({ movies }: ICardList) => {
 
-
-const CardsList = () => {
-
-  
   return (
     <div className="cards-list-wrapper">
-      {mockMovies.map((movie) => (
+      {movies.map((movie) => (
         <Card
           key={movie.id}
           imageUrl={movie.image}
           rating={movie.rating ? Number(movie.rating) : 0}
-          title={`${movie.title} (${movie.released})`}
+          title={movie.title}
+          released = {movie.released}
         />
       ))}
     </div>
   );
 };
 
-export default CardsList;
+export default CardList;
