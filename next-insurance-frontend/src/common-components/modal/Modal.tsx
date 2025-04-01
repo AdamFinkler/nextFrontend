@@ -2,11 +2,12 @@ import { useState } from "react";
 import Modal from "react-modal";
 import arrowIcon from "../../assets/arrow.png";
 import "./style.css";
-import Button from "../button/Button";
+import CardButton from "../cardButton/CardButton";
+import starIcon from "../../assets/star.svg";
 
 import { IModal } from "./types";
 
-Modal.setAppElement("#root");
+Modal.setAppElement("body");
 
 const MovieModal = ({
   imageUrl,
@@ -30,28 +31,25 @@ const MovieModal = ({
           <img
             className="modal-image"
             src="https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABd8H3yW84QBZ7bXkGlzSmeKjpS8gUEV7S_zPN4qVOX7mQ0SNpyHlOkh0WGGlrARjpOZPFlZXyU4t5E8phADO9rq80g.jpg?r=43c"
+            alt="modal-image"
           />
 
           <div className="modal-details-container">
             <div className="modal-text-details-wrapper">
-              <h2 className="title">title</h2>
+              <h2 className="title">{title}</h2>
 
-              <p className="duration"> 2h 19min</p>
+              <p className="duration">{duration}</p>
+              {rating.trim().length > 0 && (
+                <div className="rating-container">
+                  <img className="modal-star-icon" src={starIcon} />
+                  <p className="rating"> {rating}</p>
+                </div>
+              )}
 
-              <p className="rating"> 8.8/10</p>
-
-              <p className="description">
-                An insomniac office worker and a devilmay-care soapmaker form an
-                underground fight club that evolves into something much, much
-                more. An insomniac office worker and a devilmay-care soapmaker
-                form an underground fight club that evolves into something much,
-                much more. An insomniac office worker and a devilmay-care
-                soapmaker form an underground fight club that evolves into
-                something much, much more.
-              </p>
+              <p className="description">{description}</p>
             </div>
 
-            <Button
+            <CardButton
               text={"back to list"}
               icon={arrowIcon}
               onClickHandler={setCloseModal}

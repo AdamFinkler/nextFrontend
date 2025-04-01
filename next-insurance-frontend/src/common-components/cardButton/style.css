@@ -1,4 +1,4 @@
-.primary-button {
+.card-button {
   display: flex;
   border-radius: 50px;
   outline: none;
@@ -17,20 +17,29 @@
   font-size: 16px;
 }
 
-.primary-button:hover {
+.card-button:hover {
   background-color: #217997;
 }
 
-.primary-button.close {
+.card-button.close {
   flex-direction: row-reverse;
 }
 
-.primary-button.close img {
+.card-button.close img {
   transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {
-  .primary-button {
+  .card-button {
     max-width: none;
+  }
+}
+
+@media (max-width: 376px) {
+  .card-button {
+    padding: 4px 8px;
+  }
+  .button-text {
+    font-size: 12px;
   }
 }

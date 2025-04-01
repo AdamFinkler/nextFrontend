@@ -11,7 +11,7 @@ import instagramIcon from "../assets/instagram-share-icon.png";
 
 const Layout = ({ children }: ILayout) => {
   return (
-    <div>
+    <div className = "layout-container">
       <div className="layout-top-bar">
         <img className="banner" src={banner} />
       </div>

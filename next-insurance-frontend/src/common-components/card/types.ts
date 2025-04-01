@@ -1,5 +1,8 @@
 export interface ICard {
   imageUrl: string;
   title: string;
-  rating: number;
+  released: string;
+  rating: string;
+  description: string;
+  duration: string;
 }
