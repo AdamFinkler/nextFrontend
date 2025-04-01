@@ -19,7 +19,3 @@ export const cleanSynopsis = (input: string): string => {
   const sanitized = DOMPurify.sanitize(stringAfterRegex);
   return decodeHtmlEntities(sanitized).trim();
 };
-
-export const hasRating = (string: string): boolean => {
-  return string.trim().length > 0;
-};
