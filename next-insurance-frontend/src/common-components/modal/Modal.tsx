@@ -1,11 +1,10 @@
-import { useState } from "react";
 import Modal from "react-modal";
 import arrowIcon from "../../assets/arrow.png";
-import "./style.css";
-import CardButton from "../cardButton/CardButton";
 import starIcon from "../../assets/star.svg";
-
+import CardButton from "../cardButton/CardButton";
+import "./style.css";
 import { IModal } from "./types";
+import { formatDuration } from "./utils";
 
 Modal.setAppElement("body");
 
@@ -28,17 +27,13 @@ const MovieModal = ({
         contentLabel="Example Modal"
       >
         <div className="modal-content-container">
-          <img
-            className="modal-image"
-            src="https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABd8H3yW84QBZ7bXkGlzSmeKjpS8gUEV7S_zPN4qVOX7mQ0SNpyHlOkh0WGGlrARjpOZPFlZXyU4t5E8phADO9rq80g.jpg?r=43c"
-            alt="modal-image"
-          />
+          <img className="modal-image" src={imageUrl} alt="modal-image" />
 
           <div className="modal-details-container">
             <div className="modal-text-details-wrapper">
               <h2 className="title">{title}</h2>
 
-              <p className="duration">{duration}</p>
+              <p className="duration">{formatDuration(duration)}</p>
               {rating.trim().length > 0 && (
                 <div className="rating-container">
                   <img className="modal-star-icon" src={starIcon} />

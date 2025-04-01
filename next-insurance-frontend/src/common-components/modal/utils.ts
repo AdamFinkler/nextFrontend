@@ -1,0 +1,1 @@
+export const formatDuration = (str: string) => str.replace(/h(?=\d+m)/, 'h  ');
