@@ -34,3 +34,12 @@
     max-width: none;
   }
 }
+
+@media (max-width: 376px) {
+  .primary-button {
+    padding: 4px 8px;
+  }
+  .button-text {
+    font-size: 12px;
+  }
+}

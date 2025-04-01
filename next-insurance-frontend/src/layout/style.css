@@ -1,3 +1,9 @@
+.layout-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .layout-top-bar {
   position: fixed;
   z-index: 999;
@@ -9,7 +15,11 @@
   gap: 15px;
   padding: 0 20px;
 }
-
+.layout-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
 .layout-footer {
   background-color: var(--dark-grey);
   display: flex;

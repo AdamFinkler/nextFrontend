@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import arrowIcon from "../../assets/arrow.png";
 import "./style.css";
 import Button from "../button/Button";
+import starIcon from "../../assets/star.svg";
 
 import { IModal } from "./types";
 
@@ -30,6 +31,7 @@ const MovieModal = ({
           <img
             className="modal-image"
             src="https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABd8H3yW84QBZ7bXkGlzSmeKjpS8gUEV7S_zPN4qVOX7mQ0SNpyHlOkh0WGGlrARjpOZPFlZXyU4t5E8phADO9rq80g.jpg?r=43c"
+            alt="modal-image"
           />
 
           <div className="modal-details-container">
@@ -37,12 +39,14 @@ const MovieModal = ({
               <h2 className="title">{title}</h2>
 
               <p className="duration">{duration}</p>
+              {rating.trim().length > 0 && (
+                <div className="rating-container">
+                  <img className="modal-star-icon" src={starIcon} />
+                  <p className="rating"> {rating}</p>
+                </div>
+              )}
 
-              <p className="rating"> {rating}</p>
-
-              <p className="description">
-               {description}
-              </p>
+              <p className="description">{description}</p>
             </div>
 
             <Button
