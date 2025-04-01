@@ -1,0 +1,45 @@
+.card-button {
+  display: flex;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  max-width: 260px;
+  background-color: transparent;
+  border: 1px solid var(--black);
+  padding: 12px;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-text {
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.card-button:hover {
+  background-color: #217997;
+}
+
+.card-button.close {
+  flex-direction: row-reverse;
+}
+
+.card-button.close img {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .card-button {
+    max-width: none;
+  }
+}
+
+@media (max-width: 376px) {
+  .card-button {
+    padding: 4px 8px;
+  }
+  .button-text {
+    font-size: 12px;
+  }
+}

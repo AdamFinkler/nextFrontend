@@ -1,10 +1,16 @@
 import { axiosClient } from "./axiosClient";
+import { MOVIES_PER_PAGE } from "../consts/consts";
 
-export const fetchMovies = async () => {
+
+export const fetchMovies = async (offset = 0, limit = MOVIES_PER_PAGE * 3) => {
   try {
-    const response = await axiosClient.get("/movies");
-    return response.data;
+    const response= await axiosClient.get("/movies", {
+      params: { offset, limit },
+    });
+    const serverResponse = response.data;
+    return serverResponse.movies;
   } catch (e) {
-    console.log("error fetching movies: ", e);
+    console.error("Error fetching movies:", e);
+    return { results: [] };
   }
 };
