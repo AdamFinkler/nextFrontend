@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import arrowIcon from "../../assets/arrow.png";
 import "./style.css";
-import Button from "../button/Button";
+import CardButton from "../cardButton/CardButton";
 import starIcon from "../../assets/star.svg";
 
 import { IModal } from "./types";
@@ -49,7 +49,7 @@ const MovieModal = ({
               <p className="description">{description}</p>
             </div>
 
-            <Button
+            <CardButton
               text={"back to list"}
               icon={arrowIcon}
               onClickHandler={setCloseModal}

@@ -1,12 +1,12 @@
 import { create } from "zustand";
-import { MovieDTO } from "./types";
+import { IMovie } from "./types";
 
 interface MoviesStore {
-  movies: MovieDTO[];
-  setMovies: (movies: MovieDTO[]) => void;
+  movies: IMovie[];
+  setMovies: (movies: IMovie[]) => void;
 }
 
 export const useMovieStore = create<MoviesStore>()((set) => ({
   movies: [],
-  setMovies: (newMovies: MovieDTO[]) => set({ movies: newMovies }),
+  setMovies: (newMovies: IMovie[]) => set({ movies: newMovies }),
 }));
