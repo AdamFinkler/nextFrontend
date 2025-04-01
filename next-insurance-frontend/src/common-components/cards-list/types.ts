@@ -1,5 +1,6 @@
-import { MovieDTO } from "../../store/types";
+import { IMovie} from "../../store/types";
 
 export interface ICardList{
-  movies: MovieDTO[];
+  pageIndex:number;
+  movies: IMovie[];
 };
