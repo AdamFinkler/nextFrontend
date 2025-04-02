@@ -1,12 +1,12 @@
+import { useEffect, useMemo } from "react";
 import Card from "../common-components/card/Card";
-import "./style.css";
-import { useMovieStore } from "../store/movieStore";
 import ErrorHandler from "../common-components/error-handler/ErrorHandler";
-import { getPaginatedMovies } from "./utils";
-import { useEffect } from "react";
-import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
 import Loader from "../common-components/loader/Loader";
 import Pagination from "../common-components/pagination/Pagination";
+import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
+import { useMovieStore } from "../store/movieStore";
+import "./style.css";
+import { getPaginatedMovies } from "./utils";
 
 const MoviesList = () => {
   const { movies, searchTerm, pageIndex, sortedByRating } = useMovieStore(
@@ -19,19 +19,22 @@ const MoviesList = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pageIndex]);
 
-  const isSearchEmpty = !searchTerm.trim();
+  const moviesToDisplay = useMemo(() => {
+    return sortedByRating
+      ? [...movies].sort((a, b) => Number(b.rating) - Number(a.rating))
+      : !searchTerm.trim()
+      ? movies
+      : movies.filter((movie) =>
+          movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+  }, [movies, searchTerm, sortedByRating]);
 
-  const filteredMovies = isSearchEmpty
-    ? movies
-    : movies.filter((movie) =>
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  const paginatedMovies = useMemo(
+    () => getPaginatedMovies(moviesToDisplay, pageIndex),
+    [moviesToDisplay, pageIndex]
+  );
 
-  const currentMovies = sortedByRating
-    ? [...filteredMovies].sort((a, b) => Number(b.rating) - Number(a.rating))
-    : filteredMovies;
-
-  const paginatedMovies = getPaginatedMovies(currentMovies, pageIndex);
+  const onClickTryAgain = () => window.location.reload();
 
   if (loading) return <Loader />;
 
@@ -40,20 +43,21 @@ const MoviesList = () => {
       <ErrorHandler
         message={error}
         buttonText="refresh the page"
-        buttonHandler={() => window.location.reload()}
+        buttonHandler={onClickTryAgain}
+      />
+    );
+
+  if (!moviesToDisplay.length)
+    return (
+      <ErrorHandler
+        message={`no results found for '${searchTerm}'`}
+        buttonText="back to home page"
+        buttonHandler={onClickTryAgain}
       />
     );
 
   return (
     <div className="cards-list-wrapper">
-      {!currentMovies.length && (
-        <ErrorHandler
-          message={`no results found for '${searchTerm}'`}
-          buttonText="back to home page"
-          buttonHandler={() => window.location.reload()}
-        />
-      )}
-
       {paginatedMovies.map((movie) => (
         <Card
           key={movie.id}

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import banner from "../../assets/banner.png";
-import TopRated from "./topRated/TopRated";
 import Search from "../../common-components/search/Search";
-import "./styles.css";
 import HamburgerMenu from "./hamburgerMenu/HamburgerMenu";
 import Recommended from "./recommended/Recommended";
+import "./styles.css";
+import TopRated from "./topRated/TopRated";
 
 const TopBar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

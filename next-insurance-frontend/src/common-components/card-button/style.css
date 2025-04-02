@@ -12,6 +12,14 @@
   transition: background-color 0.3s ease;
 }
 
+.card-button-left {
+  flex-direction: row-reverse;
+}
+
+.card-button-left img {
+  rotate: 180deg;
+}
+
 .button-text {
   font-family: Arial;
   font-size: 16px;
@@ -19,14 +27,6 @@
 
 .card-button:hover {
   background-color: #217997;
-}
-
-.card-button.close {
-  flex-direction: row-reverse;
-}
-
-.card-button.close img {
-  transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,5 @@
 import { HOMEPAGE_TITLE } from "../consts/consts";
-import MoviesList from "../movies-list/CardsList";
+import MoviesList from "../movies-list/MoviesList";
 import "./style.css";
 
 const Homepage = () => {

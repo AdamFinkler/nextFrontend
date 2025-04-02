@@ -4,7 +4,7 @@ import { IMovie } from "../store/types";
 export const getPaginatedMovies = (
   movies: IMovie[],
   offset: number,
-  pageSize: number = MOVIES_PER_PAGE
+  pageSize = MOVIES_PER_PAGE
 ) => {
   const start = offset * pageSize;
   const end = start + pageSize;
