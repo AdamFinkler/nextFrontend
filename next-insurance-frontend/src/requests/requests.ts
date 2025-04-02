@@ -16,7 +16,9 @@ export const fetchMovies = async (offset = 0, limit = MOVIES_PER_PAGE * 3) => {
 
 export const fetchSearchedMovies = async (searchTerm: string) => {
   try {
-    const response = await axiosClient.get(`/movies/${searchTerm}`);
+    const response = await axiosClient.get("/movies/search", {
+      params: { searchTerm }
+    });
     const serverResponse = response.data;
     return serverResponse.movies;
   } catch (error) {

@@ -17,11 +17,11 @@ const HamburgerMenu = () => {
   const menuFeatures = [
     {
       key: "topRated",
-      content: <TopRated handleCloseMenu={handleCloseMenu} />,
+      component: <TopRated handleCloseMenu={handleCloseMenu} />,
     },
     {
       key: "recommended",
-      content: <Recommended handleCloseMenu={handleCloseMenu} />,
+      component: <Recommended handleCloseMenu={handleCloseMenu} />,
     },
   ];
 
@@ -46,10 +46,10 @@ const HamburgerMenu = () => {
       </button>
 
       {isOpen && (
-        <div className="menu-content">
+        <div className="menu-component">
           {menuFeatures.map((item, index) => (
             <div key={item.key}>
-              <div className="menu-item">{item.content}</div>
+              <div className="menu-item">{item.component}</div>
 
               {index !== menuFeatures.length - 1 && (
                 <hr className="menu-divider" />

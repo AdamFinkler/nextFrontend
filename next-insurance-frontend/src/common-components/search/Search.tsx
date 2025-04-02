@@ -1,37 +1,34 @@
 import React, { useRef } from "react";
-import "./styles.css";
-import { useMovieStore } from "../../store/movieStore";
-import { fetchSearchedMovies } from "../../requests/requests";
 import { cleanString } from "../../customHooks/useFetchMovies/utils";
+import { fetchSearchedMovies } from "../../requests/requests";
+import { useMovieStore } from "../../store/movieStore";
+import "./styles.css";
 
 const Search = () => {
   const setPageIndex = useMovieStore((state) => state.setPageIndex);
-  const movies = useMovieStore((state) => state.movies);
-  const setMovies = useMovieStore((state) => state.setMovies);
+  const setFilteredMovies = useMovieStore((state) => state.setFilteredMovies);
   const setSearchedTerm = useMovieStore((state) => state.setSearchTerm);
   const movieSearchRef = useRef<HTMLInputElement>(null);
 
   const handleSearchOnClick = async () => {
     if (!movieSearchRef.current?.value.trim()) {
       setSearchedTerm("");
+      setFilteredMovies([]);
       return;
     }
 
     try {
       setPageIndex(0);
       const searchedMovies = await fetchSearchedMovies(
-        movieSearchRef.current.value
+        cleanString(movieSearchRef.current.value)
       );
-      const mergedMovies = [...movies, ...searchedMovies];
 
-      const uniqueMovies = Array.from(
-        new Map(mergedMovies.map((movie) => [movie.id, movie])).values()
-      );
-      setMovies(uniqueMovies);
+      setFilteredMovies(searchedMovies);
       setSearchedTerm(cleanString(movieSearchRef.current.value));
     } catch (e) {
       console.error("error while searching for a movie", e);
     }
+    movieSearchRef.current.value = "";
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -48,6 +45,7 @@ const Search = () => {
         alt="search icon"
         onClick={handleSearchOnClick}
       />
+
       <input
         type="text"
         className="search-input"

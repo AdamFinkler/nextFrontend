@@ -2,16 +2,14 @@ import { useEffect, useMemo } from "react";
 import Card from "../common-components/card/Card";
 import ErrorHandler from "../common-components/error-handler/ErrorHandler";
 import Loader from "../common-components/loader/Loader";
-import Pagination from "../common-components/pagination/Pagination";
 import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
 import { useMovieStore } from "../store/movieStore";
 import "./style.css";
 import { getPaginatedMovies } from "./utils";
 
 const MoviesList = () => {
-  const { movies, searchTerm, pageIndex, sortedByRating } = useMovieStore(
-    (state) => state
-  );
+  const { movies, filteredMovies, searchTerm, pageIndex, sortedByRating } =
+    useMovieStore((state) => state);
 
   const { loading, error } = useFetchMovies({ pageIndex });
 
@@ -20,14 +18,16 @@ const MoviesList = () => {
   }, [pageIndex]);
 
   const moviesToDisplay = useMemo(() => {
-    return sortedByRating
-      ? [...movies].sort((a, b) => Number(b.rating) - Number(a.rating))
-      : !searchTerm.trim()
-      ? movies
-      : movies.filter((movie) =>
-          movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-  }, [movies, searchTerm, sortedByRating]);
+    const currentMovies = searchTerm.trim() ? filteredMovies : movies;
+    if (sortedByRating) {
+      return [...currentMovies].sort(
+        (a, b) => Number(b.rating) - Number(a.rating)
+      );
+    }
+    
+    return currentMovies;
+
+  }, [searchTerm, filteredMovies, movies, sortedByRating]);
 
   const paginatedMovies = useMemo(
     () => getPaginatedMovies(moviesToDisplay, pageIndex),
@@ -69,8 +69,6 @@ const MoviesList = () => {
           duration={movie.runtime}
         />
       ))}
-
-      <Pagination />
     </div>
   );
 };

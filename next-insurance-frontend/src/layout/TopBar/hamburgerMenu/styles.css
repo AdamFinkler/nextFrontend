@@ -9,7 +9,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-component: space-around;
   height: 24px;
   width: 30px;
   padding: 0;
@@ -23,7 +23,7 @@
   transition: all 0.3s ease;
 }
 
-.menu-content {
+.menu-component {
   position: absolute;
   top: 35px;
   right: 20px;
@@ -34,7 +34,7 @@
   z-index: 1000;
 }
 
-.menu-content p {
+.menu-component p {
   margin: 5px 0 0 0;
 }
 
