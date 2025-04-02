@@ -10,12 +10,7 @@ import Pagination from "../common-components/pagination/Pagination";
 
 const MoviesList = () => {
   const { movies, searchTerm, pageIndex, sortedByRating } = useMovieStore(
-    ({ movies, searchTerm, pageIndex, sortedByRating }) => ({
-      movies,
-      searchTerm,
-      pageIndex,
-      sortedByRating,
-    })
+    (state) => state
   );
 
   const { loading, error } = useFetchMovies({ pageIndex });
