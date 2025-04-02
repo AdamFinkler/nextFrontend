@@ -1,24 +1,32 @@
 import Card from "../card/Card";
-import { MOVIES_PER_PAGE } from "../../consts/consts";
 import "./style.css";
-import { ICardList } from "./types";
-import { IMovie } from "../../store/types";
+import { useMovieStore } from "../../store/movieStore";
+import ErrorHandler from "../errorHandler/ErrorHandler";
+import { getPaginatedMovies } from "./utils";
 
-export const getPaginatedMovies = (
-  movies: IMovie[],
-  offset: number,
-  pageSize: number = MOVIES_PER_PAGE
-) => {
-  const start = offset * pageSize;
-  const end = start + pageSize;
-  return movies.slice(start, end);
-};
+const CardsList = () => {
+  const movieArr = useMovieStore((state) => state.movies);
+  const searchTerm = useMovieStore((state) => state.searchTerm);
+  const pageIndex = useMovieStore((state) => state.pageIndex);
 
-const CardList = ({ movies, pageIndex }: ICardList) => {
-  const paginatedMovies = getPaginatedMovies(movies, pageIndex);
+  const isSearchEmpty = !searchTerm.trim();
+  const currentMovies = isSearchEmpty
+    ? movieArr
+    : movieArr.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+  const paginatedMovies = getPaginatedMovies(currentMovies, pageIndex);
 
   return (
     <div className="cards-list-wrapper">
+      {!currentMovies.length && (
+        <ErrorHandler
+          message={`no results found for '${searchTerm}'`}
+          buttonText="back to home page"
+          buttonHandler={() => window.location.reload()}
+        />
+      )}
       {paginatedMovies.map((movie) => (
         <Card
           key={movie.id}
@@ -34,4 +42,4 @@ const CardList = ({ movies, pageIndex }: ICardList) => {
   );
 };
 
-export default CardList;
+export default CardsList;
