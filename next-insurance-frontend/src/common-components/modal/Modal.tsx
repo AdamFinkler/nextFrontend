@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import arrowIcon from "../../assets/arrow.png";
 import starIcon from "../../assets/star.svg";
-import CardButton from "../cardButton/CardButton";
+import CardButton from "../card-button/CardButton";
 import "./style.css";
 import { IModal } from "./types";
 import { formatDuration } from "./utils";

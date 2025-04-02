@@ -1,5 +1,5 @@
-import { MOVIES_PER_PAGE } from "../../consts/consts";
-import { IMovie } from "../../store/types";
+import { MOVIES_PER_PAGE } from "../consts/consts";
+import { IMovie } from "../store/types";
 
 export const getPaginatedMovies = (
   movies: IMovie[],

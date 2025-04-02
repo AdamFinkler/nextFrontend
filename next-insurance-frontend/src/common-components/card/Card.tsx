@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./style.css";
 import starIcon from "../../assets/star.svg";
 import arrowIcon from "../../assets/arrow.png";
-import CardButton from "../cardButton/CardButton";
+import CardButton from "../card-button/CardButton";
 import Modal from "../modal/Modal";
 import { hasRating } from "./utils";
 
@@ -38,7 +38,11 @@ const Card = ({
         </div>
       )}
 
-      <CardButton text="Read more" icon={arrowIcon} onClickHandler={setOpenModal} />
+      <CardButton
+        text="Read more"
+        icon={arrowIcon}
+        onClickHandler={setOpenModal}
+      />
       {modalIsOpen && (
         <Modal
           imageUrl={imageUrl}
