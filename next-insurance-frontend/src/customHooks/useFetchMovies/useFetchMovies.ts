@@ -6,7 +6,6 @@ import { IuseFetchMovies } from "./types";
 import { MOVIES_PER_PAGE } from "../../consts/consts";
 import { cleanString, cleanSynopsis } from "./utils";
 
-
 const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
   const movies = useMovieStore((state) => state.movies);
   const setMovies = useMovieStore((state) => state.setMovies);
@@ -37,7 +36,7 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
 
       fetchData();
     }
-  }, [pageIndex, movies.length, setMovies]);
+  }, [pageIndex]);
 
   return { loading, error };
 };

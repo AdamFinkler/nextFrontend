@@ -1,21 +1,16 @@
+import { useEffect } from "react";
 import CardsList from "../common-components/cards-list/CardsList";
-import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
-import { useMovieStore } from "../store/movieStore";
-import "./style.css";
-import Pagination from "../common-components/pagination/Pagination";
-import { useEffect, useState } from "react";
-import Loader from "../common-components/loader/Loader";
-import { HOMEPAGE_TITLE } from "../consts/consts";
 import ErrorHandler from "../common-components/errorHandler/ErrorHandler";
+import Loader from "../common-components/loader/Loader";
+import Pagination from "../common-components/pagination/Pagination";
+import { HOMEPAGE_TITLE } from "../consts/consts";
+import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
+import "./style.css";
+import { useMovieStore } from "../store/movieStore";
 
 const Homepage = () => {
-  const movies = useMovieStore((state) => state.movies);
-  const [pageIndex, setPageIndex] = useState<number>(0);
+  const pageIndex = useMovieStore((state) => state.pageIndex);
   const { loading, error } = useFetchMovies({ pageIndex });
-
-  const handlePageIndex = (pageIndex: number) => {
-    setPageIndex(pageIndex);
-  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -34,8 +29,8 @@ const Homepage = () => {
       {!loading && !error && (
         <>
           <h1 className="homepage-title">{HOMEPAGE_TITLE}</h1>
-          <CardsList pageIndex={pageIndex} movies={movies} />
-          <Pagination pageIndex={pageIndex} handlePageIndex={handlePageIndex} />
+          <CardsList />
+          <Pagination />
         </>
       )}
     </div>
