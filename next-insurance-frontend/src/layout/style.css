@@ -4,17 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.layout-top-bar {
-  position: fixed;
-  z-index: 999;
-  width: 100%;
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 0 20px;
-}
+
 .layout-content {
   flex: 1;
   display: flex;
@@ -62,23 +52,4 @@
 
 .search-input {
   height: 60%;
-}
-
-.banner {
-  height: 50px;
-}
-
-@media (min-width: 768px) {
-  .layout-top-bar {
-    padding: 0 50px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .layout-top-bar {
-    padding: 10px 143px;
-  }
-  .banner {
-    height: 81px;
-  }
 }

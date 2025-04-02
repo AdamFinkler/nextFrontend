@@ -8,13 +8,18 @@ const CardsList = () => {
   const movieArr = useMovieStore((state) => state.movies);
   const searchTerm = useMovieStore((state) => state.searchTerm);
   const pageIndex = useMovieStore((state) => state.pageIndex);
+  const sortedByRating = useMovieStore((state) => state.sortedByRating);
 
   const isSearchEmpty = !searchTerm.trim();
-  const currentMovies = isSearchEmpty
+  const filteredMovies = isSearchEmpty
     ? movieArr
     : movieArr.filter((movie) =>
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
+
+  const currentMovies = sortedByRating
+    ? [...filteredMovies].sort((a, b) => Number(b.rating) - Number(a.rating))
+    : filteredMovies;
 
   const paginatedMovies = getPaginatedMovies(currentMovies, pageIndex);
 

@@ -1,0 +1,33 @@
+.layout-top-bar {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 0 20px;
+}
+.banner {
+  height: 50px;
+}
+
+.right-toolbar-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .right-toolbar-container {
+    flex-direction: row-reverse;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+  }
+}
