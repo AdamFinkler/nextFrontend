@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles.css";
 import { IErrorHandler } from "./types";
 
@@ -10,6 +9,7 @@ const ErrorHandler = ({
   return (
     <div className="error-handler-wrapper">
       {message}
+
       <button className="retry-button" onClick={buttonHandler}>
         {buttonText}
       </button>

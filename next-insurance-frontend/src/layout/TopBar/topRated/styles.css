@@ -1,0 +1,28 @@
+.top-rated-button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.top-rated-button:hover {
+  color: var(--lightblue);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .top-rated-button {
+    font-size: 14.4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .top-rated-button {
+    font-size: 17.6px;
+  }
+}

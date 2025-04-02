@@ -3,9 +3,8 @@ import { useState } from "react";
 import "./style.css";
 import starIcon from "../../assets/star.svg";
 import arrowIcon from "../../assets/arrow.png";
-import CardButton from "../cardButton/CardButton";
+import CardButton from "../card-button/CardButton";
 import Modal from "../modal/Modal";
-import { hasRating } from "./utils";
 
 const Card = ({
   imageUrl,
@@ -15,14 +14,14 @@ const Card = ({
   description,
   duration,
 }: ICard) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const setOpenModal = () => {
-    setModalIsOpen(true);
+    setIsModalOpen(true);
   };
 
   const setCloseModal = () => {
-    setModalIsOpen(false);
+    setIsModalOpen(false);
   };
 
   return (
@@ -31,22 +30,28 @@ const Card = ({
 
       <p className="card-title-and-release">{`${title} (${released})`}</p>
 
-      {hasRating(rating) && (
+      {rating.length > 0 && (
         <div className="card-rating-wrapper">
           <img src={starIcon} alt="star-icon" className="card-star-icon" />
           <span className="card-rating-text">{rating}</span>
         </div>
       )}
 
-      <CardButton text="Read more" icon={arrowIcon} onClickHandler={setOpenModal} />
-      {modalIsOpen && (
+      <CardButton
+        text="Read more"
+        icon={arrowIcon}
+        onClickHandler={setOpenModal}
+        direction="right"
+      />
+
+      {isModalOpen && (
         <Modal
           imageUrl={imageUrl}
           title={title}
           duration={duration}
           rating={rating}
           description={description}
-          isOpen={modalIsOpen}
+          isOpen={isModalOpen}
           setCloseModal={setCloseModal}
         />
       )}

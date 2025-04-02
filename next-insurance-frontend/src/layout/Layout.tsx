@@ -1,4 +1,4 @@
-import banner from "../assets/banner.png";
+
 import { ILayout } from "./types";
 import "./style.css";
 import favIcon from "../assets/favicon.png";
@@ -7,15 +7,13 @@ import twitterIcon from "../assets/twitter-share-icon.png";
 import linkedinIcon from "../assets/linkedin-share-icon.png";
 import youtubeIcon from "../assets/youtube-share-icon.png";
 import instagramIcon from "../assets/instagram-share-icon.png";
-import Search from "../common-components/search/Search";
+
+import TopBar from "./TopBar/TopBar";
 
 const Layout = ({ children }: ILayout) => {
   return (
     <div className="layout-container">
-      <div className="layout-top-bar">
-        <img className="banner" src={banner} />
-        <Search />
-      </div>
+      <TopBar />
 
       <div className="layout-content">{children}</div>
 

@@ -1,4 +1,4 @@
-.myModalOverlay {
+.my-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,8 @@
   gap: 8px;
   margin-bottom: 40px;
 }
-.myModalContent {
+
+.my-modal-content {
   position: relative;
   max-width: 80%;
   background: #ffffff;
@@ -70,8 +71,8 @@
 }
 
 .modal-star-icon {
-    width: 35px;
-  }
+  width: 35px;
+}
 @media (min-width: 1200px) {
   .title {
     margin-bottom: 25px;
@@ -80,7 +81,6 @@
   .duration {
     margin-bottom: 25px;
   }
- 
 }
 
 @media (min-width: 767px) and (max-width: 1199px) {
@@ -182,14 +182,10 @@
     max-height: 60px;
     overflow-y: auto;
   }
-  
-
 }
 
-
-@media (max-width: 450px)
-{
-    .modal-star-icon {
-        width: 23px;
-      }
+@media (max-width: 450px) {
+  .modal-star-icon {
+    width: 23px;
+  }
 }

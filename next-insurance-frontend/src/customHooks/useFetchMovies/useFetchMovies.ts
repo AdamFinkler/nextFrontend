@@ -17,9 +17,12 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
 
     if (movies.length <= moviesNeeded) {
       setLoading(true);
+
       const fetchData = async () => {
+        console.log("fetching data");
         try {
           const moviesData: IMovie[] = await fetchMovies(movies.length);
+
           const cleanedMovies = moviesData.map((movie) => ({
             ...movie,
             title: cleanString(movie.title),
@@ -28,7 +31,6 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
           setMovies([...movies, ...cleanedMovies]);
         } catch (err) {
           console.error(err);
-          setError("Error fetching movies from server");
         } finally {
           setLoading(false);
         }
@@ -37,7 +39,6 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
       fetchData();
     }
   }, [pageIndex]);
-
   return { loading, error };
 };
 
