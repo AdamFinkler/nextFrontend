@@ -5,8 +5,10 @@ import starIcon from "../../assets/star.svg";
 import arrowIcon from "../../assets/arrow.png";
 import CardButton from "../card-button/CardButton";
 import Modal from "../modal/Modal";
+import { useMovieStore } from "../../store/movieStore";
 
 const Card = ({
+  id,
   imageUrl,
   title,
   released,
@@ -15,7 +17,8 @@ const Card = ({
   duration,
 }: ICard) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const updateCash = useMovieStore((state) => state.updateCashedMovieIds);
+  const cash = useMovieStore((state) => state.cashedMovieIds);
   const setOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -40,7 +43,11 @@ const Card = ({
       <CardButton
         text="Read more"
         icon={arrowIcon}
-        onClickHandler={setOpenModal}
+        onClickHandler={() => {
+          setOpenModal();
+          updateCash(id);
+          console.log("cashed items are: ", cash);
+        }}
         direction="right"
       />
 
