@@ -18,7 +18,6 @@ const Card = ({
 }: ICard) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const updateCash = useMovieStore((state) => state.updateCashedMovieIds);
-  const cash = useMovieStore((state) => state.cashedMovieIds);
   const setOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -46,7 +45,6 @@ const Card = ({
         onClickHandler={() => {
           setOpenModal();
           updateCash(id);
-          console.log("cashed items are: ", cash);
         }}
         direction="right"
       />

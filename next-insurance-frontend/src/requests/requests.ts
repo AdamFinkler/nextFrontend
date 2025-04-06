@@ -32,7 +32,6 @@ export const fetchRecommendedMovies = async (ids: string[]) => {
     const response = await axiosClient.get("/movies/recommended", {
       params: { ids },
     });
-    console.log("recommended movies are: ", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching recommended movies:", error);

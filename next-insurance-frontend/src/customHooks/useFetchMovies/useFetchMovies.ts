@@ -19,7 +19,6 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
       setLoading(true);
 
       const fetchData = async () => {
-        console.log("fetching data");
         try {
           const moviesData: IMovie[] = await fetchMovies(movies.length);
 

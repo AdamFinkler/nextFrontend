@@ -1,3 +1,3 @@
 export interface IRecommended {
-  handleCloseMenu: () => void;
+  handleCloseMenu?: () => void;
 }
