@@ -30,7 +30,7 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
           }));
           setMovies([...movies, ...cleanedMovies]);
         } catch (err) {
-          console.error(err);
+          setError("couldnt fetch movies from server");
         } finally {
           setLoading(false);
         }
