@@ -4,7 +4,7 @@
   outline: none;
   padding: 0;
   margin: 0;
-  font-size: 16px; 
+  font-size: 16px;
   color: inherit;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -24,5 +24,6 @@
 @media (min-width: 1024px) {
   .recommended-button {
     font-size: 17.6px;
+    min-width: 200px;
   }
 }
