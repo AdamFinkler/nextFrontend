@@ -40,7 +40,6 @@ export const fetchRecommendedMovies = async (
   ids: string[]
 ): Promise<IMovie[]> => {
   try {
-    console.log("fetching recommended");
     const response = await axiosClient.get("/movies/recommended", {
       params: { ids },
     });

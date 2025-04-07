@@ -19,7 +19,6 @@ const UseFetchRecommendedMovies = () => {
     const fetchData = async () => {
       setLoadingRecommended(true);
       try {
-        console.log("use fetch recommended provoked");
 
         const recommended: IMovie[] = await fetchRecommendedMovies(cashedIds);
         setRecommendedMovies(recommended);
