@@ -7,12 +7,17 @@ const Pagination = () => {
   const movieArr = useMovieStore((state) => state.movies);
   const searchTerm = useMovieStore((state) => state.searchTerm);
   const pageIndex = useMovieStore((state) => state.pageIndex);
+  const recommendedMovies = useMovieStore((state) => state.recommendedMovies);
   const setPageIndex = useMovieStore((state) => state.setPageIndex);
-
+  const isShowingRecommended = useMovieStore(
+    (state) => state.isShowingRecommended
+  );
   const filteredMovies = movieArr.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  const numOfPages = getNumOfPages(filteredMovies.length);
+  const numOfPages = isShowingRecommended
+    ? getNumOfPages(recommendedMovies.length)
+    : getNumOfPages(filteredMovies.length);
   const currentPageOneBased = pageIndex + 1;
   const visiblePages = getVisiblePages(currentPageOneBased, numOfPages);
 

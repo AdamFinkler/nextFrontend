@@ -26,3 +26,15 @@ export const fetchSearchedMovies = async (searchTerm: string) => {
     return { results: [] };
   }
 };
+
+export const fetchRecommendedMovies = async (ids: string[]) => {
+  try {
+    const response = await axiosClient.get("/movies/recommended", {
+      params: { ids },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching recommended movies:", error);
+    throw error;
+  }
+};

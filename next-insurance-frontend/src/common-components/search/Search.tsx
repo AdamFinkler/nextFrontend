@@ -8,9 +8,16 @@ const Search = () => {
   const setPageIndex = useMovieStore((state) => state.setPageIndex);
   const setFilteredMovies = useMovieStore((state) => state.setFilteredMovies);
   const setSearchedTerm = useMovieStore((state) => state.setSearchTerm);
+  const isShowingRecommended = useMovieStore(
+    (state) => state.isShowingRecommended
+  );
+  const toggleIsShowingRecommended = useMovieStore(
+    (state) => state.toggleIsShowingRecommended
+  );
   const movieSearchRef = useRef<HTMLInputElement>(null);
 
   const handleSearchOnClick = async () => {
+    if (isShowingRecommended) toggleIsShowingRecommended();
     if (!movieSearchRef.current?.value.trim()) {
       setSearchedTerm("");
       setFilteredMovies([]);

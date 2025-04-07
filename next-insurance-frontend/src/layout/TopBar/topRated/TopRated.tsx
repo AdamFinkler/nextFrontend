@@ -3,19 +3,18 @@ import "./styles.css";
 import { ITopRated } from "./types";
 
 const TopRated = ({ handleCloseMenu }: ITopRated) => {
-  const { sortedByRating, toggleSortByRating } = useMovieStore(
-    (state) => state
-  );
+  const { isSortedByRating: isSortedByRating, toggleIsSortByRating } =
+    useMovieStore((state) => state);
 
   const handleTopRatedClick = () => {
-    toggleSortByRating();
+    toggleIsSortByRating();
 
     if (handleCloseMenu) handleCloseMenu();
   };
 
   return (
     <button className="top-rated-button" onClick={handleTopRatedClick}>
-      {sortedByRating ? "Original Order" : "Top Rated"}
+      {isSortedByRating ? "Original Order" : "Top Rated"}
     </button>
   );
 };

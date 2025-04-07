@@ -1,15 +1,25 @@
-import React from "react";
 import { useMovieStore } from "../../../store/movieStore";
 import "./styles.css";
-import { ITopRated } from "../topRated/types";
+import { IRecommended } from "./types";
 
-const Recommended = ({ handleCloseMenu }: ITopRated) => {
-  const handleRecommendedClick = () => {
+const Recommended = ({ handleCloseMenu }: IRecommended) => {
+  const {
+    isShowingRecommended,
+    toggleIsShowingRecommended,
+    setSearchTerm,
+    setPageIndex,
+  } = useMovieStore((state) => state);
+
+  const handleRecommendedOnClick = () => {
+    setPageIndex(0);
+    setSearchTerm("");
+    toggleIsShowingRecommended();
     if (handleCloseMenu) handleCloseMenu();
   };
+
   return (
-    <button className="recommended-button" onClick={handleRecommendedClick}>
-      Recommended
+    <button className="recommended-button" onClick={handleRecommendedOnClick}>
+      {isShowingRecommended ? "Back To Homepage" : "Show Recommended"}
     </button>
   );
 };

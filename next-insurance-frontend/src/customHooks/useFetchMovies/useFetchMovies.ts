@@ -19,7 +19,6 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
       setLoading(true);
 
       const fetchData = async () => {
-        console.log("fetching data");
         try {
           const moviesData: IMovie[] = await fetchMovies(movies.length);
 
@@ -30,7 +29,7 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
           }));
           setMovies([...movies, ...cleanedMovies]);
         } catch (err) {
-          console.error(err);
+          setError("couldnt fetch movies from server");
         } finally {
           setLoading(false);
         }
