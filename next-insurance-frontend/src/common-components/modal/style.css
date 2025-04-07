@@ -10,32 +10,25 @@
   justify-content: center;
   z-index: 10;
 }
-.rating-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
-}
 
 .my-modal-content {
   position: relative;
-  max-width: 80%;
+  width: 90%;
+  margin: 5% auto 0;
   background: #ffffff;
-  margin: 0 auto;
-  outline: none;
-  padding: 24px 80px;
+  padding: 16px;
   max-height: 90vh;
   overflow-y: auto;
 }
 
 .modal-content-container {
   display: flex;
-  gap: 72px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .modal-image {
-  flex: 0 0 35%;
-  max-width: 35%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -48,144 +41,130 @@
 
 .title {
   text-align: left;
-  font: normal normal bold 45px/54px Arial;
+  font: normal normal bold 30px/36px Arial;
+  text-transform: uppercase;
+  margin-bottom: 10px;
   color: #000;
 }
 
 .duration {
   text-align: left;
-  font: normal normal normal 26px/31px Arial;
+  font: normal normal normal 20px/24px Arial;
+  margin-bottom: 10px;
   color: #000;
 }
 
 .rating {
   text-align: left;
-  font: normal normal normal 26px/31px Arial;
+  font: normal normal normal 18px/22px Arial;
   color: #000;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .description {
   text-align: left;
-  font: normal normal normal 30px/36px Georgia;
+  font: normal normal normal 16px/20px Georgia;
+  margin-bottom: 15px;
+  max-height: 96px;
+  overflow-y: auto;
   color: #000;
 }
 
 .modal-star-icon {
-  width: 35px;
-}
-@media (min-width: 1200px) {
-  .title {
-    margin-bottom: 25px;
-  }
-
-  .duration {
-    margin-bottom: 25px;
-  }
-}
-
-@media (min-width: 767px) and (max-width: 1199px) {
-  .modal-image {
-    flex: 1;
-    max-width: 100%;
-  }
-  .myModalContent {
-    max-width: 90%;
-  }
-  .modal-content-container {
-    gap: 48px;
-  }
-  .description {
-    max-height: 246px;
-    overflow-y: auto;
-  }
-  .title {
-    margin-bottom: 25px;
-  }
-
-  .rating-container {
-    margin-bottom: 12px;
-  }
-  .duration {
-    margin-bottom: 12px;
-  }
-}
-
-@media (max-width: 767px) {
-  .myModalContent {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 5%;
-    padding: 16px;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .modal-content-container {
-    flex-direction: column;
-    gap: 16px;
-    padding: 0;
-  }
-
-  .modal-image {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .title {
-    font: normal normal bold 30px/36px Arial;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .duration {
-    font: normal normal normal 20px/24px Arial;
-  }
-
-  .rating {
-    font: normal normal normal 18px/22px Arial;
-  }
-
-  .rating-container {
-    margin-bottom: 10px;
-  }
-
-  .description {
-    font: normal normal normal 16px/20px Georgia;
-    margin-bottom: 15px;
-    max-height: 96px;
-    overflow-y: auto;
-  }
+  width: 23px;
 }
 
 @media (max-width: 376px) {
-  .myModalContent {
+  .my-modal-content {
     width: 70%;
+    padding: 12px 24px;
   }
+
   .title {
     font: normal normal bold 19.2px/24px Arial;
     margin-bottom: 4px;
   }
-  .duration {
-    font: normal normal normal 12.8px/16px Arial;
-    margin-bottom: 4px;
-  }
+
+  .duration,
   .rating {
     font: normal normal normal 12.8px/16px Arial;
-  }
-  .rating-container {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
   }
 
   .description {
     font: normal normal normal 11.2px/16px Georgia;
-    margin-bottom: 15px;
     max-height: 60px;
-    overflow-y: auto;
   }
 }
 
-@media (max-width: 450px) {
+@media (min-width: 768px) {
+  .modal-content-container {
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .modal-image {
+    flex: 1;
+  }
+
+  .my-modal-content {
+    max-width: 90%;
+    padding: 24px 60px;
+  }
+
+  .description {
+    max-height: 246px;
+  }
+
+  .title {
+    margin-bottom: 25px;
+  }
+
+  .rating-container,
+  .duration {
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .my-modal-content {
+    max-width: 80%;
+    padding: 24px 80px;
+  }
+
+  .modal-content-container {
+    gap: 72px;
+  }
+
+  .modal-image {
+    flex: 0 0 35%;
+    max-width: 35%;
+  }
+
+  .title {
+    font: normal normal bold 45px/54px Arial;
+  }
+
+  .duration,
+  .rating {
+    font: normal normal normal 26px/31px Arial;
+  }
+
+  .description {
+    font: normal normal normal 30px/36px Georgia;
+  }
+
   .modal-star-icon {
-    width: 23px;
+    width: 35px;
+  }
+
+  .rating-container {
+    margin-bottom: 40px;
   }
 }
