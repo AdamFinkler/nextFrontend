@@ -3,11 +3,12 @@ import "./styles.css";
 import { ITopRated } from "./types";
 
 const TopRated = ({ handleCloseMenu }: ITopRated) => {
-  const { isSortedByRating: isSortedByRating, toggleIsSortByRating } =
-    useMovieStore((state) => state);
+  const isSortedByRating = useMovieStore((state)=> state.isSortedByRating);
+  const toggleIsSortedByRating = useMovieStore((state)=> state.toggleIsSortedByRating)
+
 
   const handleTopRatedClick = () => {
-    toggleIsSortByRating();
+    toggleIsSortedByRating();
 
     if (handleCloseMenu) handleCloseMenu();
   };

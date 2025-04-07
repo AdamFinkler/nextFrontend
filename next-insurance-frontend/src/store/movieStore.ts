@@ -18,7 +18,7 @@ interface MoviesStore {
   setMovies: (movies: IMovie[]) => void;
   setFilteredMovies: (movies: IMovie[]) => void;
   setSearchTerm: (term: string) => void;
-  toggleIsSortByRating: () => void;
+  toggleIsSortedByRating: () => void;
   toggleIsShowingRecommended: () => void;
 }
 
@@ -51,7 +51,7 @@ export const useMovieStore = create<MoviesStore>()(
       setFilteredMovies: (newMovies: IMovie[]) =>
         set({ filteredMovies: newMovies }),
       setSearchTerm: (term: string) => set({ searchTerm: term }),
-      toggleIsSortByRating: () =>
+      toggleIsSortedByRating: () =>
         set((state) => ({ isSortedByRating: !state.isSortedByRating })),
       toggleIsShowingRecommended: () =>
         set((state) => ({ isShowingRecommended: !state.isShowingRecommended })),
@@ -62,3 +62,17 @@ export const useMovieStore = create<MoviesStore>()(
     }
   )
 );
+
+
+export const useMovieListState = () => {
+  return {
+    movies: useMovieStore((state) => state.movies),
+    filteredMovies: useMovieStore((state) => state.filteredMovies),
+    recommendedMovies: useMovieStore((state) => state.recommendedMovies),
+    searchTerm: useMovieStore((state) => state.searchTerm),
+    pageIndex: useMovieStore((state) => state.pageIndex),
+    isSortedByRating: useMovieStore((state) => state.isSortedByRating),
+    isShowingRecommended: useMovieStore((state) => state.isShowingRecommended),
+    toggleIsShowingRecommended: useMovieStore((state) => state.toggleIsShowingRecommended),
+  };
+};

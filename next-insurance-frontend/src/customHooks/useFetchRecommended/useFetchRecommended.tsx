@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef, useState } from "react";
 import { useMovieStore } from "../../store/movieStore";
 import { fetchRecommendedMovies } from "../../requests/requests";
@@ -7,7 +5,9 @@ import { IMovie } from "../../store/types";
 
 const UseFetchRecommendedMovies = () => {
   const cashedIds = useMovieStore((state) => state.cashedMovieIds);
-  const setRecommendedMovies = useMovieStore((state) => state.setRecommendedMovies);
+  const setRecommendedMovies = useMovieStore(
+    (state) => state.setRecommendedMovies
+  );
   const hasFetched = useRef(false);
 
   const [loadingRecommended, setLoadingRecommended] = useState<boolean>(false);
@@ -19,6 +19,8 @@ const UseFetchRecommendedMovies = () => {
     const fetchData = async () => {
       setLoadingRecommended(true);
       try {
+        console.log("use fetch recommended provoked");
+
         const recommended: IMovie[] = await fetchRecommendedMovies(cashedIds);
         setRecommendedMovies(recommended);
         hasFetched.current = true;

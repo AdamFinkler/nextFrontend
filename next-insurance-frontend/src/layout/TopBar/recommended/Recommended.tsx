@@ -3,12 +3,10 @@ import "./styles.css";
 import { IRecommended } from "./types";
 
 const Recommended = ({ handleCloseMenu }: IRecommended) => {
-  const {
-    isShowingRecommended,
-    toggleIsShowingRecommended,
-    setSearchTerm,
-    setPageIndex,
-  } = useMovieStore((state) => state);
+  const isShowingRecommended = useMovieStore((state) => state.isShowingRecommended);
+  const toggleIsShowingRecommended = useMovieStore((state) => state.toggleIsShowingRecommended);
+  const setSearchTerm = useMovieStore((state) => state.setSearchTerm);
+  const setPageIndex = useMovieStore((state) => state.setPageIndex);
 
   const handleRecommendedOnClick = () => {
     setPageIndex(0);

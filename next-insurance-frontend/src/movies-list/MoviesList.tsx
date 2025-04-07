@@ -2,26 +2,27 @@ import { useEffect, useMemo } from "react";
 import Card from "../common-components/card/Card";
 import ErrorHandler from "../common-components/error-handler/ErrorHandler";
 import Loader from "../common-components/loader/Loader";
-import { useMovieStore } from "../store/movieStore";
+import { useMovieListState } from "../store/movieStore";
 import "./style.css";
 import { getPaginatedMovies } from "./utils";
 import UseFetchRecommendedMovies from "../customHooks/useFetchRecommended/useFetchRecommended";
 import UseFetchMovies from "../customHooks/useFetchMovies/UseFetchMovies";
 
 const MoviesList = () => {
-  const {
-    movies,
-    filteredMovies,
-    recommendedMovies,
-    searchTerm,
-    pageIndex,
-    isSortedByRating,
-    isShowingRecommended,
-    toggleIsShowingRecommended,
-  } = useMovieStore((state) => state);
 
-  const { loadingRecommended, errorRecommended } = UseFetchRecommendedMovies();
+const {
+  movies,
+  filteredMovies,
+  recommendedMovies,
+  searchTerm,
+  pageIndex,
+  isSortedByRating,
+  isShowingRecommended,
+  toggleIsShowingRecommended,
+} = useMovieListState();
+
   const { loading, error } = UseFetchMovies({ pageIndex });
+  const { loadingRecommended, errorRecommended } = UseFetchRecommendedMovies();
 
   const moviesToDisplay = useMemo(() => {
     let currentMovies;
@@ -117,5 +118,3 @@ const MoviesList = () => {
 };
 
 export default MoviesList;
-
-
