@@ -54,11 +54,11 @@ export const useMovieStore = create<MoviesStore>()(
       toggleIsSortByRating: () =>
         set((state) => ({ isSortedByRating: !state.isSortedByRating })),
       toggleIsShowingRecommended: () =>
-        set((state) => ({ isShowingRecommended: !state.isShowingRecommended }))
+        set((state) => ({ isShowingRecommended: !state.isShowingRecommended })),
     }),
     {
-      name: "cashedMovieIdsStore", 
-      partialize: (state) => ({ cashedMovieIds: state.cashedMovieIds })
+      name: "cashedMovieIdsStore",
+      partialize: (state) => ({ cashedMovieIds: state.cashedMovieIds }),
     }
   )
 );

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { IMovie } from "../../store/types";
+import { MOVIES_PER_PAGE } from "../../consts/consts";
 import { fetchMovies } from "../../requests/requests";
 import { useMovieStore } from "../../store/movieStore";
+import { IMovie } from "../../store/types";
 import { IuseFetchMovies } from "./types";
-import { MOVIES_PER_PAGE } from "../../consts/consts";
-import { cleanString, cleanSynopsis } from "./utils";
 
-const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
+const UseFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
   const movies = useMovieStore((state) => state.movies);
   const setMovies = useMovieStore((state) => state.setMovies);
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,16 +19,11 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
 
       const fetchData = async () => {
         try {
-          const moviesData: IMovie[] = await fetchMovies(movies.length);
+          const newMovies: IMovie[] = await fetchMovies(movies.length);
 
-          const cleanedMovies = moviesData.map((movie) => ({
-            ...movie,
-            title: cleanString(movie.title),
-            synopsis: cleanSynopsis(movie.synopsis),
-          }));
-          setMovies([...movies, ...cleanedMovies]);
-        } catch (err) {
-          setError("couldnt fetch movies from server");
+          setMovies([...movies, ...newMovies]);
+        } catch (e) {
+          setError(String(e));
         } finally {
           setLoading(false);
         }
@@ -41,4 +35,4 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
   return { loading, error };
 };
 
-export default useFetchMovies;
+export default UseFetchMovies;

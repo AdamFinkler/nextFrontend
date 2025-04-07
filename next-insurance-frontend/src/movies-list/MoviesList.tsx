@@ -2,11 +2,11 @@ import { useEffect, useMemo } from "react";
 import Card from "../common-components/card/Card";
 import ErrorHandler from "../common-components/error-handler/ErrorHandler";
 import Loader from "../common-components/loader/Loader";
-import useFetchMovies from "../customHooks/useFetchMovies/useFetchMovies";
-import useFetchRecommendedMovies from "../customHooks/useFetchRecommended/useFetchRecommended";
 import { useMovieStore } from "../store/movieStore";
 import "./style.css";
 import { getPaginatedMovies } from "./utils";
+import UseFetchRecommendedMovies from "../customHooks/useFetchRecommended/useFetchRecommended";
+import UseFetchMovies from "../customHooks/useFetchMovies/UseFetchMovies";
 
 const MoviesList = () => {
   const {
@@ -15,13 +15,13 @@ const MoviesList = () => {
     recommendedMovies,
     searchTerm,
     pageIndex,
-    isSortedByRating: isSortedByRating,
-    isShowingRecommended: isShowingRecommended,
+    isSortedByRating,
+    isShowingRecommended,
     toggleIsShowingRecommended,
   } = useMovieStore((state) => state);
-  const { loading, error } = useFetchMovies({ pageIndex });
 
-  useFetchRecommendedMovies();
+  const { loadingRecommended, errorRecommended } = UseFetchRecommendedMovies();
+  const { loading, error } = UseFetchMovies({ pageIndex });
 
   const moviesToDisplay = useMemo(() => {
     let currentMovies;
@@ -57,15 +57,25 @@ const MoviesList = () => {
 
   const handleTryAgain = () => window.location.reload();
   const handleNoRecommended = () => toggleIsShowingRecommended();
-  if (loading) return <Loader />;
+  if (loading || (loadingRecommended && isShowingRecommended))
+    return <Loader />;
 
   if (isShowingRecommended && !recommendedMovies.length)
     return (
       <ErrorHandler
         message={
-          "explore some movies so we know what to recommend you on your next visit"
+          "Explore some movies to help us tailor recommendations for your next visit."
         }
         buttonText="back to homepage"
+        buttonHandler={handleNoRecommended}
+      />
+    );
+
+  if (errorRecommended && isShowingRecommended)
+    return (
+      <ErrorHandler
+        message={errorRecommended}
+        buttonText="back to homePage"
         buttonHandler={handleNoRecommended}
       />
     );
@@ -74,12 +84,12 @@ const MoviesList = () => {
     return (
       <ErrorHandler
         message={error}
-        buttonText="refresh the page"
+        buttonText="Try again"
         buttonHandler={handleTryAgain}
       />
     );
 
-  if (!moviesToDisplay.length)
+  if (!moviesToDisplay.length && searchTerm.trim().length)
     return (
       <ErrorHandler
         message={`no results found for '${searchTerm}'`}
@@ -107,3 +117,5 @@ const MoviesList = () => {
 };
 
 export default MoviesList;
+
+
