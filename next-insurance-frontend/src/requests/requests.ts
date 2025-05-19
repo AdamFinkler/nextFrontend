@@ -6,8 +6,8 @@ export const fetchMovies = async (offset = 0, limit = MOVIES_PER_PAGE * 3) => {
     const response = await axiosClient.get("/movies", {
       params: { offset, limit },
     });
-    const serverResponse = response.data;
-    return serverResponse.movies;
+    const movies = response.data;
+    return movies;
   } catch (e) {
     console.error("Error fetching movies:", e);
     return { results: [] };
@@ -17,10 +17,10 @@ export const fetchMovies = async (offset = 0, limit = MOVIES_PER_PAGE * 3) => {
 export const fetchSearchedMovies = async (searchTerm: string) => {
   try {
     const response = await axiosClient.get("/movies/search", {
-      params: { searchTerm }
+      params: { searchTerm },
     });
-    const serverResponse = response.data;
-    return serverResponse.movies;
+    const movies = response.data;
+    return movies
   } catch (error) {
     console.error("Error fetching searched movies:", error);
     return { results: [] };

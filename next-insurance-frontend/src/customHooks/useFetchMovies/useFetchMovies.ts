@@ -21,12 +21,12 @@ const useFetchMovies = ({ pageIndex }: IuseFetchMovies) => {
       const fetchData = async () => {
         try {
           const moviesData: IMovie[] = await fetchMovies(movies.length);
-
           const cleanedMovies = moviesData.map((movie) => ({
             ...movie,
             title: cleanString(movie.title),
             synopsis: cleanSynopsis(movie.synopsis),
           }));
+
           setMovies([...movies, ...cleanedMovies]);
         } catch (err) {
           setError("couldnt fetch movies from server");
